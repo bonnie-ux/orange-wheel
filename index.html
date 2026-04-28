@@ -78,7 +78,7 @@
           </div>
           <button class="center-btn" id="spinBtn">試一下<br>手氣</button>
         </div>
-        <div class="mascot" aria-hidden="true"><img src="mascot.png" alt="橘時咖啡公仔"></div>
+        <div class="mascot" aria-hidden="true"><img src="mascot.png.png" alt="橘時咖啡公仔"></div>
       </div>
       <aside class="right">
         <div class="card"><h2>活動說明</h2><div class="rule"><div class="ico">🥤</div><div>購買任兩杯飲品<br>即可參加抽獎</div></div><div class="rule"><div class="ico">🎁</div><div>每人每日<br>限抽一次</div></div><div class="rule"><div class="ico">😊</div><div>幾乎每抽<br>都有優惠！</div></div></div>
@@ -106,14 +106,10 @@
     function spin(){
       if(spinning)return;spinning=true;btn.classList.add("disabled");modal.classList.remove("show");
       const prize=weightedRandom();
-      const segment=45;
-      const centerAngle=prize.index*segment;
-      const randomOffset=(Math.random()*14)-7;
-      const currentMod=((currentRotation%360)+360)%360;
-      const targetMod=((-centerAngle+randomOffset)%360+360)%360;
-      const delta=(targetMod-currentMod+360)%360;
-      const extra=360*(6+Math.floor(Math.random()*2));
-      currentRotation=currentRotation+extra+delta;
+      const stopAngles=[0,-45,-90,-135,-180,-225,-270,-315];
+      const randomOffset=(Math.random()*10)-5;
+      const targetAngle=stopAngles[prize.index]+randomOffset;
+      currentRotation=360*8+targetAngle;
       wheel.style.transform=`rotate(${currentRotation}deg)`;
       setTimeout(()=>showPrize(prize),4900);
     }
@@ -129,5 +125,8 @@
     }
     btn.addEventListener("click",spin);
   </script>
+</body>
+</html>
+
 </body>
 </html>
