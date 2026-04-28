@@ -21,8 +21,7 @@
     .brand small{display:block;font-size:12px;letter-spacing:1.5px;margin-top:2px;}
     .badge{position:absolute;right:7%;top:0;background:linear-gradient(#a9642d,#6a3217);color:white;border-radius:18px;padding:8px 28px;font-size:clamp(20px,2.4vw,34px);font-weight:900;box-shadow:0 8px 0 rgba(70,30,10,.18);transform:rotate(-2deg);}
     .title{margin-top:7vh;text-align:center;line-height:.95;font-weight:1000;font-size:clamp(64px,8vw,120px);color:#3d1d0c;text-shadow:0 7px 0 #fff,0 12px 20px rgba(61,29,12,.25);}
-    .title span{color:var(--orange);}
-    .ribbon{margin-top:1.2vh;background:linear-gradient(#ff8e34,#e56a13);color:white;border-radius:999px;padding:12px 42px;font-size:clamp(24px,3vw,44px);font-weight:900;box-shadow:0 8px 0 rgba(111,45,8,.25);}
+    .title span{color:var(--orange);}.ribbon{margin-top:1.2vh;background:linear-gradient(#ff8e34,#e56a13);color:white;border-radius:999px;padding:12px 42px;font-size:clamp(24px,3vw,44px);font-weight:900;box-shadow:0 8px 0 rgba(111,45,8,.25);}
     .wheel-wrap{position:relative;margin-top:2vh;width:min(67vh,58vw);height:min(67vh,58vw);display:grid;place-items:center;}
     .pointer{position:absolute;top:-10px;z-index:8;width:0;height:0;border-left:30px solid transparent;border-right:30px solid transparent;border-top:70px solid #f05b22;filter:drop-shadow(0 8px 6px rgba(80,30,10,.35));}
     .wheel-shell{position:absolute;inset:0;border-radius:50%;background:linear-gradient(145deg,#ffb335,#de6415);box-shadow:0 22px 0 #8a4317,0 26px 40px rgba(61,29,12,.35),inset 0 0 0 12px #ffc866;display:grid;place-items:center;}
@@ -30,10 +29,8 @@
     .bulbs i{position:absolute;left:50%;top:50%;width:22px;height:22px;margin:-11px;background:#fff6b8;border-radius:50%;box-shadow:0 0 18px #fff18a;transform:rotate(calc(var(--i)*18deg)) translateY(calc(-1 * min(31.2vh,27vw)));}
     @keyframes glow{from{filter:brightness(.95)}to{filter:brightness(1.18)}}
     .wheel{position:relative;width:86%;height:86%;border-radius:50%;overflow:hidden;transition:transform 4.8s cubic-bezier(.08,.75,.08,1);box-shadow:inset 0 0 0 5px rgba(255,255,255,.8);background:conic-gradient(from -22.5deg,#fff0a6 0 45deg,#ffb0a5 45deg 90deg,#ffe08b 90deg 135deg,#ffc2df 135deg 180deg,#bce8ff 180deg 225deg,#b8e8a6 225deg 270deg,#d7b7ff 270deg 315deg,#afe5f2 315deg 360deg);}
-    .seg{position:absolute;left:50%;top:50%;width:42%;height:42%;transform-origin:0 0;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:1000;font-size:clamp(16px,1.75vw,26px);line-height:1.15;color:#4a250f;text-shadow:0 2px 0 rgba(255,255,255,.75);}
-    .seg .text{transform:translate(38%,-32%) rotate(22.5deg);max-width:145px;}
+    .seg{position:absolute;left:50%;top:50%;width:170px;height:90px;margin-left:-85px;margin-top:-45px;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:1000;font-size:clamp(16px,1.7vw,26px);line-height:1.15;color:#4a250f;text-shadow:0 2px 0 rgba(255,255,255,.75);transform:rotate(var(--angle)) translateY(calc(-1 * min(21vh,18vw))) rotate(calc(-1 * var(--angle)));}
     .seg small{font-size:.68em;font-weight:800;display:block;}.seg b{font-size:1.15em;color:#e85f18;}
-    .seg:nth-child(1){transform:rotate(0deg)}.seg:nth-child(2){transform:rotate(45deg)}.seg:nth-child(3){transform:rotate(90deg)}.seg:nth-child(4){transform:rotate(135deg)}.seg:nth-child(5){transform:rotate(180deg)}.seg:nth-child(6){transform:rotate(225deg)}.seg:nth-child(7){transform:rotate(270deg)}.seg:nth-child(8){transform:rotate(315deg)}
     .center-btn{position:absolute;width:24%;height:24%;border-radius:50%;border:9px solid #ffc36b;background:radial-gradient(circle at 35% 25%,#ffb05b,#f06116 70%);color:#fff;font-weight:1000;font-size:clamp(20px,2.2vw,36px);display:grid;place-items:center;text-align:center;z-index:9;box-shadow:0 8px 0 #a23c10,0 13px 24px rgba(70,25,0,.3);cursor:pointer;}
     .center-btn:active{transform:translateY(4px);box-shadow:0 4px 0 #a23c10;}.center-btn.disabled{pointer-events:none;filter:grayscale(.2);}
     .mascot{position:absolute;left:1vw;bottom:4vh;width:min(19vw,230px);height:min(19vw,230px);animation:bob 2.2s ease-in-out infinite;display:flex;align-items:flex-end;justify-content:center;}
@@ -63,17 +60,16 @@
         <div class="ribbon">買兩杯飲品即可抽一次！</div>
         <div class="wheel-wrap">
           <div class="pointer"></div>
-          <div class="wheel-shell">
-            <div class="bulbs" id="bulbs"></div>
+          <div class="wheel-shell"><div class="bulbs" id="bulbs"></div>
             <div class="wheel" id="wheel">
-              <div class="seg"><div class="text">免費咖啡<small>最高折抵200</small></div></div>
-              <div class="seg"><div class="text">全品項半價<br><b>50%</b></div></div>
-              <div class="seg"><div class="text">升級大杯</div></div>
-              <div class="seg"><div class="text">送匈牙利捲</div></div>
-              <div class="seg"><div class="text">滿200折40</div></div>
-              <div class="seg"><div class="text">買兩杯折50</div></div>
-              <div class="seg"><div class="text">再抽一次</div></div>
-              <div class="seg"><div class="text">10元折價券</div></div>
+              <div class="seg" style="--angle:0deg">免費咖啡<small>最高折抵200</small></div>
+              <div class="seg" style="--angle:45deg">全品項半價<br><b>50%</b></div>
+              <div class="seg" style="--angle:90deg">升級大杯</div>
+              <div class="seg" style="--angle:135deg">送匈牙利捲</div>
+              <div class="seg" style="--angle:180deg">滿200折40</div>
+              <div class="seg" style="--angle:225deg">買兩杯折50</div>
+              <div class="seg" style="--angle:270deg">再抽一次</div>
+              <div class="seg" style="--angle:315deg">10元折價券</div>
             </div>
           </div>
           <button class="center-btn" id="spinBtn">試一下<br>手氣</button>
@@ -90,26 +86,28 @@
   </main>
   <script>
     const prizes=[
-      {name:"免費咖啡（最高折抵200）",weight:2,index:0},
-      {name:"全品項半價",weight:5,index:1},
-      {name:"升級大杯",weight:18,index:2},
-      {name:"送匈牙利捲",weight:8,index:3},
-      {name:"滿200折40",weight:25,index:4},
-      {name:"買兩杯折50",weight:12,index:5},
-      {name:"再抽一次",weight:10,index:6},
-      {name:"10元折價券",weight:20,index:7}
+      {name:"免費咖啡（最高折抵200）",weight:2,index:0,angle:0},
+      {name:"全品項半價",weight:5,index:1,angle:45},
+      {name:"升級大杯",weight:18,index:2,angle:90},
+      {name:"送匈牙利捲",weight:8,index:3,angle:135},
+      {name:"滿200折40",weight:25,index:4,angle:180},
+      {name:"買兩杯折50",weight:12,index:5,angle:225},
+      {name:"再抽一次",weight:10,index:6,angle:270},
+      {name:"10元折價券",weight:20,index:7,angle:315}
     ];
     const wheel=document.getElementById("wheel"),btn=document.getElementById("spinBtn"),modal=document.getElementById("modal"),modalTitle=document.getElementById("modalTitle"),modalPrize=document.getElementById("modalPrize"),closeBtn=document.getElementById("closeBtn"),winCard=document.getElementById("winCard"),bulbs=document.getElementById("bulbs");
     let currentRotation=0,spinning=false;
     for(let i=0;i<20;i++){const b=document.createElement("i");b.style.setProperty("--i",i);bulbs.appendChild(b);}
     function weightedRandom(){const total=prizes.reduce((s,p)=>s+p.weight,0);let r=Math.random()*total;for(const p of prizes){r-=p.weight;if(r<=0)return p;}return prizes[prizes.length-1];}
     function spin(){
-      if(spinning)return;spinning=true;btn.classList.add("disabled");modal.classList.remove("show");
+      if(spinning)return;
+      spinning=true;btn.classList.add("disabled");modal.classList.remove("show");
       const prize=weightedRandom();
-      const stopAngles=[0,-45,-90,-135,-180,-225,-270,-315];
-      const randomOffset=(Math.random()*10)-5;
-      const targetAngle=stopAngles[prize.index]+randomOffset;
-      currentRotation=360*8+targetAngle;
+      const randomOffset=(Math.random()*8)-4;
+      const targetMod=((360-prize.angle+randomOffset)%360+360)%360;
+      const currentMod=((currentRotation%360)+360)%360;
+      const delta=(targetMod-currentMod+360)%360;
+      currentRotation=currentRotation+(360*7)+delta;
       wheel.style.transform=`rotate(${currentRotation}deg)`;
       setTimeout(()=>showPrize(prize),4900);
     }
@@ -125,8 +123,5 @@
     }
     btn.addEventListener("click",spin);
   </script>
-</body>
-</html>
-
 </body>
 </html>
